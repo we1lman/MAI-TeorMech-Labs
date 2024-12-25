@@ -4,11 +4,13 @@ from matplotlib.animation import FuncAnimation
 import sympy as sp
 import math
 
+
 # Функция для поворота координат вокруг точки (XC, YC) на угол Alpha
 def Rot(X, Y, Alpha, XC, YC):
     RX = (X - XC) * np.cos(Alpha) - (Y - YC) * np.sin(Alpha) + XC  # Новая координата X
     RY = (X - XC) * np.sin(Alpha) + (Y - YC) * np.cos(Alpha) + YC  # Новая координата Y
     return RX, RY
+
 
 # Ввод символьной переменной времени t и радиуса R
 t = sp.Symbol("t")  # Время

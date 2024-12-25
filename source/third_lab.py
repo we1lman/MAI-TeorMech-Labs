@@ -7,11 +7,13 @@ import math
 
 from sympy.series import O
 
+
 # Функция для поворота координат вокруг точки (XC, YC) на угол Alpha
 def Rot(X, Y, Alpha, XC, YC):
     RX = (X - XC) * np.cos(Alpha) - (Y - YC) * np.sin(Alpha) + XC  # Новая координата X
     RY = (X - XC) * np.sin(Alpha) + (Y - YC) * np.cos(Alpha) + YC  # Новая координата Y
     return RX, RY
+
 
 # Функция для составления системы дифференциальных уравнений
 def formY(y, t, fV, fOm):
@@ -19,13 +21,14 @@ def formY(y, t, fV, fOm):
     dydt = [y3, y4, fV(t, y1, y2, y3, y4), fOm(t, y1, y2, y3, y4)]  # Формирование системы уравнений
     return dydt
 
+
 # Размеры и параметры системы
 R = 1  # Радиус призмы
 r = 0.1  # Длина балки
 m1 = 10  # Масса призмы
 m2 = 5  # Масса балки
 g = 9.81  # Ускорение свободного падения
-M_0 = 0  # Амплитуда момента
+M_0 = 2  # Амплитуда момента
 w = math.pi  # Угловая частота момента
 c = 35  # Жесткость пружины
 
@@ -159,6 +162,7 @@ spring_height = 0.3  # Высота каждого сегмента
 
 # Создаём линию для пружины
 spring_line, = ax1.plot([], [], color="purple", linewidth=2)  # Фиолетовая пружина
+
 
 def create_spring(start_x, end_x, start_y, end_y, segments, height):
     spring_x = np.linspace(start_x, end_x, segments * 2)
